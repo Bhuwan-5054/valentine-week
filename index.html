@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Valentine Week ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Initial Setup Screen -->
+    <div id="setup-screen" class="screen active">
+        <div class="setup-container">
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+            <h1 class="title">Welcome to Your<br>Valentine's Week ❤️</h1>
+            <p class="subtitle">This experience is created especially for you</p>
+            
+            <div class="input-group">
+                <label for="nickname">
+                    <i class="fas fa-user-circle"></i> Your Sweet Nickname
+                </label>
+                <input type="text" id="nickname" placeholder="e.g., Sweetie, Baby, Honey..." maxlength="20">
+                <div class="hint">(Only your nickname, no real names)</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="start-date">
+                    <i class="fas fa-calendar-heart"></i> Our Beginning Date
+                </label>
+                <input type="date" id="start-date" max="2024-02-14">
+                <div class="hint">The day our beautiful journey started</div>
+            </div>
+            
+            <!-- Image Upload Section -->
+            <div class="input-group">
+                <label for="user-image">
+                    <i class="fas fa-image"></i> Your Picture (Optional)
+                </label>
+                <div class="image-upload-container">
+                    <div class="image-preview" id="image-preview">
+                        <i class="fas fa-user-circle"></i>
+                        <span>No image selected</span>
+                    </div>
+                    <div class="upload-buttons">
+                        <input type="file" id="user-image" accept="image/*" style="display: none;">
+                        <button type="button" class="upload-btn" id="choose-image-btn">
+                            <i class="fas fa-camera"></i> Choose Image
+                        </button>
+                        <button type="button" class="remove-btn" id="remove-image-btn" style="display: none;">
+                            <i class="fas fa-trash"></i> Remove
+                        </button>
+                    </div>
+                    <div class="hint">Add your photo to personalize the experience (optional)</div>
+                </div>
+            </div>
+            
+            <div class="days-together" id="days-counter">
+                <i class="fas fa-heartbeat"></i>
+                <span>Calculating our days together...</span>
+            </div>
+            
+            <button id="submit-btn" class="submit-btn" disabled>
+                <i class="fas fa-lock"></i> Enter Valentine Week
+            </button>
+            
+            <div class="note">
+                <i class="fas fa-mobile-alt"></i> Designed with love for mobile
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main App Screen (Hidden Initially) -->
+    <div id="app-screen" class="screen">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <button class="menu-btn" id="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="greeting">
+                    <span id="greeting-text">Hello, Love!</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="music-btn" id="music-toggle">
+                    <i class="fas fa-music"></i>
+                </button>
+                <div class="day-badge" id="current-day-badge">
+                    Day 1
+                </div>
+            </div>
+        </header>
+        
+        <!-- Side Menu -->
+        <div class="side-menu" id="side-menu">
+            <div class="menu-header">
+                <h3><i class="fas fa-heart"></i> Our Love Journey</h3>
+                <button class="close-menu" id="close-menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="menu-content">
+                <div class="user-info" id="user-info">
+                    <div class="avatar">
+                        <i class="fas fa-user-heart"></i>
+                    </div>
+                    <h4 id="menu-nickname">Sweetheart</h4>
+                    <p class="love-days" id="menu-days">0 days together</p>
+                </div>
+                
+                <div class="menu-section">
+                    <h4><i class="fas fa-calendar-week"></i> Valentine Week</h4>
+                    <div class="days-list" id="days-list">
+                        <!-- Days will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="menu-section">
+                    <h4><i class="fas fa-cogs"></i> Settings</h4>
+                    <div class="menu-item" id="reset-app">
+                        <i class="fas fa-redo"></i>
+                        <span>Reset Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Day Header -->
+            <div class="day-header">
+                <div class="day-title-container">
+                    <h1 id="day-title">Rose Day</h1>
+                    <div class="day-date" id="day-date">Feb 7, 2024</div>
+                </div>
+                <div class="day-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="day-progress"></div>
+                    </div>
+                    <div class="progress-text">Day <span id="current-day-num">1</span> of 7</div>
+                </div>
+            </div>
+            
+            <!-- Day Content -->
+            <div class="day-content" id="day-content">
+                <!-- Content will be loaded dynamically -->
+            </div>
+            
+            
+        </main>
+        
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-text">
+                Made with <i class="fas fa-heart pulse"></i> for <span id="footer-nickname">You</span>
+            </div>
+            <div class="footer-countdown">
+                Next day in: <span id="next-day-countdown">23:59:59</span>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Music Player - Initially Hidden -->
+    <div class="music-player" id="music-player">
+        <div class="music-player-header">
+            <h3><i class="fas fa-music"></i> Valentine's Week Music</h3>
+            <button class="close-music" id="close-music">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="music-info">
+            <div class="album-art">
+                <i class="fas fa-heart" id="music-heart-icon"></i>
+            </div>
+            <div class="music-details">
+                <div class="music-title" id="music-title">Rose Day Theme</div>
+                <div class="music-day" id="music-day">Day 1: Rose Day</div>
+                <div class="music-status" id="music-player-status">Tap play to begin</div>
+            </div>
+        </div>
+        <div class="music-controls">
+            <button class="music-control-btn" id="music-prev">
+                <i class="fas fa-step-backward"></i>
+            </button>
+            <button class="music-control-btn" id="music-play-pause">
+                <i class="fas fa-play"></i>
+            </button>
+            <button class="music-control-btn" id="music-next">
+                <i class="fas fa-step-forward"></i>
+            </button>
+        </div>
+        <div class="volume-control">
+            <i class="fas fa-volume-down"></i>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.7">
+            <i class="fas fa-volume-up"></i>
+        </div>
+        <div class="playlist">
+            <div class="playlist-title">Valentine Week Playlist</div>
+            <div class="playlist-items" id="playlist-items">
+                <!-- Will be filled by JavaScript -->
+            </div>
+        </div>
+    </div>
+    <div class="music-overlay" id="music-overlay"></div>
+    
+    <!-- Audio Element -->
+    <audio id="background-music" loop>
+        <source src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>
