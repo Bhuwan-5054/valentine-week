@@ -10,7 +10,7 @@ A beautiful, interactive Valentine's Week website designed exclusively for mobil
 
 ## ✨ Live Demo
 
-🌐 **Live Website:** [https://YOUR-USERNAME.github.io/valentine-week/](https://YOUR-USERNAME.github.io/valentine-week/)
+🌐 **Live Website:** [[https://bhuwan-5054.github.io/valentine-week/]](https://bhuwan-5054.github.io/valentine-week/)
 
 > 📱 **Mobile Recommended:** Open on your smartphone for the best experience
 
