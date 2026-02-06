@@ -74,26 +74,6 @@ This website is **designed exclusively for mobile devices**. Desktop users will 
 - ✅ iPad (with mobile view)
 - ⚠️ Desktop (with warning message)
 
-## 🚀 Quick Start
-
-### Option 1: Use the Live Version
-1. Open the live link on your smartphone
-2. Enter your nickname and relationship start date
-3. (Optional) Upload a profile picture
-4. Click "Enter Valentine Week" button
-5. Start your Valentine's Week journey!
-
-### Option 2: Run Locally
-```bash
-# Clone the repository
-git clone https://github.com/YOUR-USERNAME/valentine-week.git
-
-# Navigate to project directory
-cd valentine-week
-
-# Install a local server (optional)
-# Using Python:
-python -m http.server 8000
 
 # Using Node.js:
 npx serve .
